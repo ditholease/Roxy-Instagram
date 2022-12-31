@@ -33,7 +33,7 @@ const BodyItem = ({ address, description, totalTips, hash, id }) => {
         <img width={35} height={35} src={`data:image/png;base64, ${data}`} />
         <div className="overflow-ellipsis w-52 overflow-hidden">{address}</div>
       </div>
-      <img src={`https://ipfs.infura.io/ipfs/${hash}`} />
+      <img src={`https://cloudflare-ipfs.com/ipfs//${hash}`} />
       <div className="py-3 px-4 flex flex-col border-l border-r">
         <span className="font-sans font-bold">Description</span>
         <span className="font-sans pt-2">{description}</span>

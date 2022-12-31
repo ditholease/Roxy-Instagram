@@ -1,8 +1,34 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { create } from "ipfs-http-client";
+//import { create } from "ipfs-http-client";
 import { Fragment, useState } from "react";
 import { useData } from "../contexts/DataContext";
 import { TextArea } from "./TextArea";
+
+//
+
+import { create as ipfsHttpClient } from 'ipfs-http-client';
+
+//import { MarketAddress, MarketAddressABI } from './constants';
+
+//const subdomainName = 'polyplace';
+const projectId = '2DZ5SclLb6YJBoDvir5Rh96PAVt';
+const projectSecret = 'd44b2bde4d2bb227907264225330c102';
+
+const authorization = `Basic ${btoa(`${projectId}:${projectSecret}`)}`;
+
+//const endpointBasePath = `https://${subdomainName}.infura-ipfs.io/ipfs/`;
+
+const client = ipfsHttpClient({
+  url: 'https://ipfs.infura.io:5001/api/v0',
+  headers: {
+    authorization,
+  },
+});
+
+
+
+//
+
 
 interface Props {
   isOpen: boolean;
@@ -13,7 +39,7 @@ export const UploadImage: React.FC<Props> = ({ isOpen, closeModal }) => {
   const [buttonTxt, setButtonTxt] = useState<string>("Upload");
   const [file, setFile] = useState<File | null>(null);
   const { contract, account, updateImages } = useData();
-  const client = create({ url: "https://ipfs.infura.io:5001/api/v0" });
+  //const client = create({ url: "https://ipfs.infura.io:5001/api/v0" });
   const [description, setDescription] = useState<string>("");
 
   const uploadImage = async () => {
